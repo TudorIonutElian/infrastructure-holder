@@ -1,1 +1,1 @@
-lambda-deploy-example-terraform-bucket-state
+lambda-deploy-example-terraform-bucket-state-dynamo
