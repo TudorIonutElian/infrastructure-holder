@@ -1,7 +1,8 @@
 #!/bin/bash
 
 source helpers/generate-variable.sh
-source helpers/clear-variables.sh
+source helpers/variables-handler.sh
+source helpers/file-handler.sh
 
 clearVariables
 # Read the file and add each line into an array
@@ -21,6 +22,8 @@ for index in "${!bucket_resources_lines[@]}"; do
 done
 
 generateVariable "s3_bucket_list" "list(string)" "$bucket_string"
+generateTerraformFile "s3-buckets"
+generateTerraformContent "s3_bucket_list"
 
 
 # Start the dynamo_string with the opening bracket
@@ -35,4 +38,6 @@ for index in "${!dynamo_resources_lines[@]}"; do
 done
 
 generateVariable "dynamo_table_list" "list(string)" "$dynamo_string"
+generateTerraformFile "dynamo-db-tables"
+generateTerraformContent "dynamo_db_tables"
 terraform fmt
