@@ -26,6 +26,7 @@ jobs:
             fi
             cd infrastructure-holder
             git pull
+            chmod u+x ./scripts/generate-variables.sh
             terraform init
             terraform plan -out=plan-${{ github.run_number }}.out
             #terraform show -json plan-${{ github.run_number }}.out > plan-${{ github.run_number }}.json
