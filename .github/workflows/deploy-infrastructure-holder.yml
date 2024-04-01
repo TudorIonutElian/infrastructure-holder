@@ -24,8 +24,9 @@ jobs:
             if [ ! -d "$dir" ]; then
               mkdir "$dir"
             fi
-            cd infrastructure-holder
-            git pull
+            ls -la
+            #cd infrastructure-holder
+            #git pull
             chmod u+x ./scripts/generate-variables.sh
             terraform init
             terraform plan -out=plan-${{ github.run_number }}.out
